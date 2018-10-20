@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Inserir">
+
+    <EditText
+        android:id="@+id/txtAno"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="Ano"
+        android:inputType="date"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@+id/spnEstado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/spnEstado"
+        android:layout_width="222dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtNumArCortadas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </Spinner>
+
+    <EditText
+        android:id="@+id/txtNumArCortadas"
+        android:layout_width="222dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="Número de Árvores Cortadas"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/txtVolume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtVolume"
+        android:layout_width="222dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="Volume (m³)"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/txtNumArRepostas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtNumArRepostas"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="Número de Árvores Repostas"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/txtValorPagar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtValorPagar"
+        android:layout_width="222dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="Valor a Pagar"
+        android:inputType="number"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSalvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Salvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtValorPagar" />
+</android.support.constraint.ConstraintLayout>
