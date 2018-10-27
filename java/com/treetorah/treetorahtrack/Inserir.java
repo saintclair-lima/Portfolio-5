@@ -2,6 +2,8 @@ package com.treetorah.treetorahtrack;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,7 +20,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inserir extends AppCompatActivity {
+    private void atualizarValorPagar(){
+        EditText txtNumArCortadas = (EditText) findViewById(R.id.txtNumArCortadas);
+        EditText txtVolume = (EditText) findViewById(R.id.txtVolume);
+        EditText txtNumArRepostas = (EditText) findViewById(R.id.txtNumArRepostas);
+        TextView lblValorPagar = (TextView) findViewById(R.id.lblValorPagar);
+        TextView txtValorPagar = (TextView) findViewById(R.id.txtValorPagar);
 
+        String cortadas = txtNumArCortadas.getText().toString();
+        if (cortadas.matches("")){
+            cortadas = "0";
+        }
+
+        String repostas = txtNumArRepostas.getText().toString();
+        if (repostas.matches("")){
+            repostas = "0";
+        }
+
+        int numCort = Integer.parseInt(cortadas);
+        int numRep = Integer.parseInt(repostas);
+        Double saldo = (numRep - numCort) * 0.49;
+
+        if (saldo > 0){
+            lblValorPagar.setText("Saldo: ");
+            txtValorPagar.setText(Double.toString(saldo));
+        } else {
+
+            lblValorPagar.setText("Valor a pagar: ");
+            txtValorPagar.setText(Double.toString(saldo));
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +90,46 @@ public class Inserir extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, estados);
         spnEstados.setAdapter(adapter);
 
-        final TextView txtNumArCortadas = (TextView) findViewById(R.id.txtNumArCortadas);
-        final TextView txtVolume = (TextView) findViewById(R.id.txtVolume);
-        final TextView txtNumArRepostas = (TextView) findViewById(R.id.txtNumArRepostas);
+        final EditText txtNumArCortadas = (EditText) findViewById(R.id.txtNumArCortadas);
+        final EditText txtVolume = (EditText) findViewById(R.id.txtVolume);
+        final EditText txtNumArRepostas = (EditText) findViewById(R.id.txtNumArRepostas);
+        final TextView lblValorPagar = (TextView) findViewById(R.id.lblValorPagar);
         final TextView txtValorPagar = (TextView) findViewById(R.id.txtValorPagar);
         Button   btnSalvar = (Button) findViewById(R.id.btnSalvar);
+
+        txtNumArCortadas.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                atualizarValorPagar();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                atualizarValorPagar();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                atualizarValorPagar();
+            }
+        });
+
+        txtNumArRepostas.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                atualizarValorPagar();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                atualizarValorPagar();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                atualizarValorPagar();
+            }
+        });
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,9 +36,21 @@ public class DetalharEntrada extends AppCompatActivity {
         TextView volumeLabel = (TextView) findViewById(R.id.volumeLabel);
         TextView volumeValor = (TextView) findViewById(R.id.volumeValor);
         volumeValor.setText(Float.toString(entrada.getVolume()));
+
+        double saldo = entrada.getValorPagar();
+
         TextView aPagarLabel = (TextView) findViewById(R.id.aPagarLabel);
         TextView aPagarValor = (TextView) findViewById(R.id.aPagarValor);
-        aPagarValor.setText(Double.toString(entrada.getValorPagar()));
+
+        if (saldo > 0){
+            aPagarLabel.setText("Saldo:");
+        } else {
+            aPagarLabel.setText("Valor a Pagar:");
+        }
+        double saldoFormatado =  Math.round(saldo*100.0)/100.0;
+
+
+        aPagarValor.setText(Double.toString(saldoFormatado));
 
         Button btnExcluirEntrada = (Button) findViewById(R.id.btnExcluirEntrada);
         btnExcluirEntrada.setOnClickListener(new View.OnClickListener() {
